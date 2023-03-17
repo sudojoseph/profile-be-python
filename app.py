@@ -7,13 +7,12 @@ from flask_cors import CORS
 app = Flask(__name__)
 jarvis = Jarvis()
 
-CORS(app, resources={r"/*": {"origins": "*"}})
+CORS(app, origins=['https://josephdavidson.dev', 'http://localhost:3000'])
 
 @app.route('/', methods=['POST'])
 def index():
     request_data = request.get_json()
     response = jarvis.ask(request_data['question'])
-    response.headers["Access-Control-Allow-Origin"] = "*"
     return response
 
 port = int(os.environ.get('PORT', 5000))
