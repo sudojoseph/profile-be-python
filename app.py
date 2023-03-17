@@ -13,6 +13,7 @@ CORS(app, resources={r"/*": {"origins": "*"}})
 def index():
     request_data = request.get_json()
     response = jarvis.ask(request_data['question'])
+    response.headers["Access-Control-Allow-Origin"] = "*"
     return response
 
 port = int(os.environ.get('PORT', 5000))
