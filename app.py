@@ -1,10 +1,13 @@
 from flask import Flask, request
 import os
 from jarvis import Jarvis
+from flask_cors import CORS
 
 
 app = Flask(__name__)
 jarvis = Jarvis()
+
+CORS(app, origins=['https://josephdavidson.dev', 'http://localhost:3000'])
 
 @app.route('/', methods=['POST'])
 def index():
