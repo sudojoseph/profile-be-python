@@ -11,7 +11,7 @@ class Jarvis:
 
     def ask(self, question):
         test = openai.Completion.create(
-            model="text-davinci-003",
+            model="gpt-3.5-turbo-0125",
             prompt= f'{self.training_model}{question}',
             max_tokens=3000,
             temperature=0
